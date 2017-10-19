@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center_vertical"
+    android:padding="9dp">
+
+    <TextView
+        android:id="@+id/lblDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="Cód. - Descrição "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtDescricaoProd"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblDescricao"
+
+        android:layout_toStartOf="@+id/txtQuantidadeProduto"
+        android:gravity="center_vertical|center_horizontal"
+        android:singleLine="true"
+        android:text="@null"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/lblQuantidade"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/txtPrecoProduto"
+        android:text="Quant "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtQuantidadeProduto"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:layout_alignEnd="@+id/lblQuantidade"
+        android:layout_below="@+id/lblQuantidade"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@null"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblPrecoProduto"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblQuantidade"
+        android:layout_alignBottom="@+id/lblQuantidade"
+        android:layout_alignParentEnd="true"
+        android:text="Preço"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtPrecoProduto"
+        android:layout_width="65dp"
+        android:layout_height="32dp"
+        android:layout_alignEnd="@+id/lblPrecoProduto"
+        android:layout_alignTop="@+id/txtQuantidadeProduto"
+        android:gravity="center_vertical|center_horizontal"
+        android:singleLine="true"
+        android:text="@null"
+        android:textColor="#000000"
+        tools:singleLine="true" />
+
+</RelativeLayout>

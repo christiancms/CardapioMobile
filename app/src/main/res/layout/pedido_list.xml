@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:padding="9dp">
+    <ImageView
+        android:id="@+id/imgBullet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lblNpedido"
+        android:layout_below="@+id/lblNpedido"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/bullet_white" />
+
+    <TextView
+        android:id="@+id/lblNpedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:text="Nº  "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtNpedido"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/lblNpedido"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/lblCientePedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txtNpedido"
+        android:text="Mesa:  "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtClientePedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/lblCientePedido"
+        android:singleLine="true"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/lblData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNpedido"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/txtNpedido"
+        android:text="Data: "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtClientePedido"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/lblData"
+        android:text="@null"
+        android:textAlignment="viewStart"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/lblTotalPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtClientePedido"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_toStartOf="@+id/txtTotalPedido"
+
+        android:text="  Total: "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtTotalPedido"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/txtClientePedido"
+        android:layout_marginTop="8dp"
+        android:textAlignment="textEnd"
+        android:textColor="#000000" />
+
+
+</RelativeLayout>

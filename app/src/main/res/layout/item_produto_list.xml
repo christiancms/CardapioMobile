@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:padding="6dp">
+
+    <TextView
+        android:id="@+id/lblDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição: "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtDescricaoProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblDescricao"
+        android:layout_toStartOf="@+id/btnAdd"
+        android:textColor="#000000" />
+
+
+    <ImageView
+        android:id="@+id/imgMoeda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnRem"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_sentiment_satisfied_black_24dp"/>
+
+    <TextView
+        android:id="@+id/lblPrecoProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgMoeda"
+        android:layout_toEndOf="@+id/imgMoeda"
+        android:text="  Preço: R$ "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtPrecoProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblPrecoProduto"
+        android:layout_toEndOf="@+id/lblPrecoProduto"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/txtQuantidadeProduto"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_above="@+id/btnAdd"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/btnRem"
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="number"
+        android:paddingTop="0dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/txtDescricaoProd"
+        android:background="#000ad2"
+        android:clickable="true"
+        android:gravity="bottom|center_horizontal"
+        android:scrollIndicators="none"
+        android:text="+"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnRem"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignTop="@+id/btnAdd"
+        android:layout_toStartOf="@+id/btnAdd"
+        android:background="#8e91c4"
+        android:clickable="true"
+        android:gravity="bottom|center_horizontal"
+        android:scrollIndicators="none"
+        android:singleLine="false"
+        android:text="-"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPosicaoProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnRem"
+        android:layout_toStartOf="@+id/btnRem"
+        android:text="@null"
+        android:textColor="@color/colorPrimary" />
+
+</RelativeLayout>

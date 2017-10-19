@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTituloPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#000ed2"
+        android:text="Pedido"
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:paddingTop="17dp">
+
+        <RelativeLayout
+            android:id="@+id/cabecalho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:id="@+id/lblNrPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="Nr.Pedido"
+                android:textColor="#000ed2" />
+
+            <TextView
+                android:id="@+id/txtNrPedido"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/txtSeriePedido"
+                android:layout_toEndOf="@+id/txtSeriePedido"
+                android:inputType="number"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/txtSeriePedido"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/lblNrPedido"
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="12345" />
+
+            <TextView
+                android:id="@+id/lblClientePedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtNrPedido"
+                android:text="Mesa"
+                android:textColor="#0019d2" />
+
+            <TextView
+                android:id="@+id/txtClientePedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/lblClientePedido"
+                android:singleLine="true"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/lblTotalPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/txtNrPedido"
+                android:text="Total"
+                android:textColor="#0011d2" />
+
+            <TextView
+                android:id="@+id/txtTotalPedido"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/txtNrPedido"
+                android:layout_alignBottom="@+id/txtNrPedido"
+                android:layout_toEndOf="@+id/txtNrPedido"
+                android:inputType="number"
+                android:singleLine="true" />
+
+
+            <Button
+                android:id="@+id/buttonEmitir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txtClientePedido"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"
+                android:text="Emitir" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rodape"
+            android:layout_below="@+id/cabecalho"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/lvPedido"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false"
+                android:layout_margin="2.5dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/rodape"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="0dp"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/edtPrazo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:hint="Informações Adicionais."
+                android:maxLength="140"
+                android:singleLine="false"
+                android:text="@null"
+                android:visibility="visible" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
