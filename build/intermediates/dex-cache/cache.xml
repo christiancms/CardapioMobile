@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/c6c5d255b05dfbbe40f4c46df9e27c4ab4a8e57a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dc4c18602ecffb3e69cda6cdc51ba4feac0f97d7">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d67968f0fb95b71bc5533d0585d973155dc0acd1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="52feaf2ec565dc33cb5df06c86e8666929a4f26a">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_01db0309fb9c829f9fbebddd7d2c6683e6b1a898/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/c1bfc557d3139f24ba9b17853d93d793f6397048/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd7676ac12aa6653718b7ea33d93ce9d6915d526">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7ba23cc8e19a577621817d04f6d54e6ac9a2a721/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/ae9eb5972cd597f68a2c0ea15c4d66eaf7dc8ffa/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="21bb89120d84fa29afeb0f9c0ebf415bc3b45a7e">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_129bc540d4db6706b314bb7e36d6f8a25997569b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/89f4a4f303db118f13831650707bf8997cf12085/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fb15fd9774b5c51dcb39d8e6fa1b6f06bcd1cd34">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a488ef4bbb2253c5d9f8d00781254c5b9ba4986f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/f02d7db850efb76a7023b13d44f09a7b17092b92/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4838df6db988160b107e954e02a745370df543b6">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9da2c0b913f34bd09ce25ece87adc515c9ca8e1a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/93b32ae1ebf14e8dee88637cbd34a7091b614db8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="363f626ad5686283250cdb6073ae1bba5cb07a87">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d9cbf40d6537fed55056f4bf9f81fdb1c07092aa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/7ebb8d1c9aa0f967851e2c7b4664f98652ed99b8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="593fbaec1c3e100480a2bd72457b64b7dde6ac2d">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_07cf8e7b170c825873c9a71cc749502877622deb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_953f6f0525e53994d135bff4c57451ccaf0c07ae/classes.dex" />
+    </item>
+
+</items>
