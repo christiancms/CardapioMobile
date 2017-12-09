@@ -8,23 +8,30 @@ import java.io.Serializable;
 
 public class Colaborador implements Serializable{
 
-    private Long id;
+    private long _id;
     private String nome;
+    private long usuario_id;
 
     public Colaborador() {
     }
 
-    public Colaborador(Long id, String nome) {
-        this.id = id;
+    public Colaborador(long _id, String nome) {
+        this._id = _id;
         this.nome = nome;
     }
 
-    public Long getId() {
-        return id;
+    public Colaborador(long _id, String nome, long usuario_id) {
+        this._id = _id;
+        this.nome = nome;
+        this.usuario_id = usuario_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public long get_id() {
+        return _id;
+    }
+
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getNome() {
@@ -33,5 +40,13 @@ public class Colaborador implements Serializable{
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public long getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(long usuario_id) {
+        this.usuario_id = usuario_id;
     }
 }

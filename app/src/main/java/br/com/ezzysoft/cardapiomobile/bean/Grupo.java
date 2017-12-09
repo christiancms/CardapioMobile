@@ -5,23 +5,23 @@ package br.com.ezzysoft.cardapiomobile.bean;
  */
 public class Grupo {
 
-    private int id;
+    private long _id;
     private String descricao;
 
     public Grupo() {
     }
 
-    public Grupo(int id, String descricao) {
-        this.id = id;
+    public Grupo(long _id, String descricao) {
+        this._id = _id;
         this.descricao = descricao;
     }
 
-    public int getId() {
-        return id;
+    public long get_id() {
+        return _id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getDescricao() {

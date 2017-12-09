@@ -19,6 +19,7 @@ public class Produto implements Serializable {
     private Marca marca;
     private Unidade unidade;
     private String nomeGrupo;
+    private boolean composto;
 
     public Produto() {
     }
@@ -114,5 +115,13 @@ public class Produto implements Serializable {
 
     public void setNomeGrupo(String nomeGrupo) {
         this.nomeGrupo = nomeGrupo;
+    }
+
+    public boolean isComposto() {
+        return composto;
+    }
+
+    public void setComposto(boolean composto) {
+        this.composto = composto;
     }
 }

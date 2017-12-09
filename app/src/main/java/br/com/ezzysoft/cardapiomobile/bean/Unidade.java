@@ -8,16 +8,24 @@ import java.io.Serializable;
 
 public class Unidade implements Serializable {
 
-    private Integer id;
+    private long _id;
     private String descricao;
     private String sigla;
 
-    public Integer getId() {
-        return id;
+    public Unidade() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Unidade(long _id, String sigla) {
+        this._id = _id;
+        this.sigla = sigla;
+    }
+
+    public long get_id() {
+        return _id;
+    }
+
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getDescricao() {

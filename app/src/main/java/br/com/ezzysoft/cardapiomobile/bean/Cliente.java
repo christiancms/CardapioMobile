@@ -1,6 +1,7 @@
 package br.com.ezzysoft.cardapiomobile.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by christian on 03/07/17.
@@ -8,23 +9,23 @@ import java.io.Serializable;
 
 public class Cliente implements Serializable{
 
-    private Long id;
+    private long _id;
     private String nome;
 
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome) {
-        this.id = id;
+    public Cliente(long _id, String nome) {
+        this._id = _id;
         this.nome = nome;
     }
 
-    public Long getId() {
-        return id;
+    public long get_id() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getNome() {

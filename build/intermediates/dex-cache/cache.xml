@@ -3,35 +3,8 @@
 
     <item
         is-multidex="true"
-        jar="/home/christian/.android/build-cache/c6c5d255b05dfbbe40f4c46df9e27c4ab4a8e57a/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="dc4c18602ecffb3e69cda6cdc51ba4feac0f97d7">
-        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d67968f0fb95b71bc5533d0585d973155dc0acd1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="52feaf2ec565dc33cb5df06c86e8666929a4f26a">
-        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_01db0309fb9c829f9fbebddd7d2c6683e6b1a898/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/christian/.android/build-cache/c1bfc557d3139f24ba9b17853d93d793f6397048/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="dd7676ac12aa6653718b7ea33d93ce9d6915d526">
-        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7ba23cc8e19a577621817d04f6d54e6ac9a2a721/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/christian/.android/build-cache/ae9eb5972cd597f68a2c0ea15c4d66eaf7dc8ffa/output/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="21bb89120d84fa29afeb0f9c0ebf415bc3b45a7e">
@@ -39,26 +12,44 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/christian/.android/build-cache/89f4a4f303db118f13831650707bf8997cf12085/output/jars/classes.jar"
-        jumboMode="true"
+        jar="/home/christian/.android/build-cache/cec63f8c50ebf6abefacf79f3ffeaa718132883f/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="fb15fd9774b5c51dcb39d8e6fa1b6f06bcd1cd34">
-        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a488ef4bbb2253c5d9f8d00781254c5b9ba4986f/classes.dex" />
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9440d12e97d327ac018569553169715a8cda4fa0/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/christian/.android/build-cache/f02d7db850efb76a7023b13d44f09a7b17092b92/output/jars/classes.jar"
-        jumboMode="true"
+        jar="/home/christian/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.1.2/3df73b1001916d861ea35f81a1da1f91513eccb4/jackson-core-2.1.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="4838df6db988160b107e954e02a745370df543b6">
-        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9da2c0b913f34bd09ce25ece87adc515c9ca8e1a/classes.dex" />
+        sha1="3df73b1001916d861ea35f81a1da1f91513eccb4">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.1.2_47abf3b9d09cad1d8c376ad73bb9bb5523049069/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.1.2/e9c672d2d60c966772c6271d5a61614a4259274a/jackson-databind-2.1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e9c672d2d60c966772c6271d5a61614a4259274a">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.1.2_6524d7f4e05a46aabcedd71cdbe66efb2cf513bf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/b94790c691caa0968ebd576b1d2f34a63ae39527/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8841f30859d501ff592e610d9ce8f7f1c028fc30/classes.dex" />
     </item>
     <item
         is-multidex="true"
         jar="/home/christian/.android/build-cache/93b32ae1ebf14e8dee88637cbd34a7091b614db8/output/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="363f626ad5686283250cdb6073ae1bba5cb07a87">
@@ -66,8 +57,107 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/christian/.android/build-cache/7ebb8d1c9aa0f967851e2c7b4664f98652ed99b8/output/jars/classes.jar"
+        jar="/home/christian/.android/build-cache/f02d7db850efb76a7023b13d44f09a7b17092b92/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4838df6db988160b107e954e02a745370df543b6">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9da2c0b913f34bd09ce25ece87adc515c9ca8e1a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-core-asl/1.9.13/3c304d70f42f832e0a86d45bd437f692129299a4/jackson-core-asl-1.9.13.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3c304d70f42f832e0a86d45bd437f692129299a4">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-asl-1.9.13_e9c32c0b24996a46a0a02ae4150a651b3216dd70/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/278da400fe6a64126aaea57a0e5f7ca020545c8d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_36ddaf5f1d8e5e45bfff648023e1112f0361930e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-mapper-asl/1.9.13/1ee2f2bed0e5dd29d1cb155a166e6f8d50bbddb7/jackson-mapper-asl-1.9.13.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1ee2f2bed0e5dd29d1cb155a166e6f8d50bbddb7">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-mapper-asl-1.9.13_806c10909b1a1c2084bb6dab6e69223b035637bc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/d59c852fadcd3793952a4ade3b92756aaa989dbe/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_62d7273582afb63225aeecc7f01a1592c329bf30/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/129c06478bf489d49519eb3fe075c567d89ae52b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a74048227eed79e13a344d15760b94e57e5b6c99/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/7ce8057b265dbeba3929529189181efe18eab1f1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9d6d4c3d3aefdc162d4355b2dd38e5c3489ee3ac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/aa9ddbd1077acf6a49fc512aa027894a3c78f520/output/jars/classes.jar"
         jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6666dd525c3da197e7d07f4f23ef5fc7881a697b">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_03d40db1aed51d7ae81e758330f4e6e18b0682cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/21875b01c2b4114139a9b1fd202e1074073bada3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cebc3886728dacd68c27f6ea179239303e83bbba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/aec58fcd9a29dff564ba9fd39de05727e929d7b7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ae2e4af0c562c632fe3fb891984925d5c7912d38/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/aa9ddbd1077acf6a49fc512aa027894a3c78f520/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6666dd525c3da197e7d07f4f23ef5fc7881a697b">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_03d40db1aed51d7ae81e758330f4e6e18b0682cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/7ebb8d1c9aa0f967851e2c7b4664f98652ed99b8/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="593fbaec1c3e100480a2bd72457b64b7dde6ac2d">
@@ -75,12 +165,111 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        jar="/home/christian/.android/build-cache/55e3fb8bded441b0a3ce9d17ec586c505b17e287/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_953f6f0525e53994d135bff4c57451ccaf0c07ae/classes.dex" />
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f32fb54e2c19f0790ca2852209728b9c2ebedd94/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/3c854e1cef5bfdf09288dafd77df48cd4ff86b6b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fd11f39eabc4c009a0adefb74cacf1b5f0b0ba24/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/c1bfc557d3139f24ba9b17853d93d793f6397048/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd7676ac12aa6653718b7ea33d93ce9d6915d526">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7ba23cc8e19a577621817d04f6d54e6ac9a2a721/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_39d742299e47187fbdc36b23ad1a4aeb80d4ace6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/ed05e4a0074676a9ec12459e214ca8adc39d47c1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f71c3fec8845aa84962889f440f53f9e0dac6485/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/c6c5d255b05dfbbe40f4c46df9e27c4ab4a8e57a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dc4c18602ecffb3e69cda6cdc51ba4feac0f97d7">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d67968f0fb95b71bc5533d0585d973155dc0acd1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/89f4a4f303db118f13831650707bf8997cf12085/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fb15fd9774b5c51dcb39d8e6fa1b6f06bcd1cd34">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a488ef4bbb2253c5d9f8d00781254c5b9ba4986f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.1.2/4b6ae44f2e251b51feee84f6a0c555e664b6efa8/jackson-annotations-2.1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4b6ae44f2e251b51feee84f6a0c555e664b6efa8">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.1.2_a041b04b4eb003d45e94f011e1d9fdf4a997135b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/7748482d3750f20596675587f2109d77744d2c8a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d4c82fc11b85a4136c659a3d9d1752d84be60516/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.android/build-cache/1058351dbe490a84cfd546a6de81756c3289664f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_89e739c8dc8b4f86ffa0d90bb91699bb25aa0ccf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_4f88277a8d49de107651788d669ca3bd95a6bfb1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/christian/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="/home/christian/AndroidProjects/CardapioMobile/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.3_fe4fe21cf7c9ccf52dc7190e2468a6efcff6acf2/classes.dex" />
     </item>
 
 </items>

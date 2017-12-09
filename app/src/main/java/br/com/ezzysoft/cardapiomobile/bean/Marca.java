@@ -8,15 +8,23 @@ import java.io.Serializable;
 
 public class Marca implements Serializable {
 
-    private Integer id;
+    private long _id;
     private String descricao;
 
-    public Integer getId() {
-        return id;
+    public Marca() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Marca(long _id, String descricao) {
+        this._id = _id;
+        this.descricao = descricao;
+    }
+
+    public long get_id() {
+        return _id;
+    }
+
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getDescricao() {
