@@ -8,12 +8,16 @@ import android.net.NetworkInfo;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by christian on 30/06/17.
  */
 
 public class Utilitarios {
+
+    public static final String APPURL = "/restaurante/ws/";
 
     public static PackageInstaller.Session mySessionObject = null;
 
@@ -24,7 +28,7 @@ public class Utilitarios {
         return (info != null && info.isConnected());
     }
 
-    private static String bytesParaString(InputStream is) throws IOException {
+    public static String bytesParaString(InputStream is) throws IOException {
         byte[] buffer = new byte[1024];
         // O bufferzao vai armazenar todos os bytes lidos
         ByteArrayOutputStream bufferzao = new ByteArrayOutputStream();
@@ -36,5 +40,20 @@ public class Utilitarios {
             bufferzao.write(buffer, 0, bytesLidos);
         }
         return new String(bufferzao.toByteArray(), "UTF-8");
+    }
+
+    public static HttpURLConnection connectar(String urlArquivo) throws IOException {
+        final int SEGUNDOS = 1000;
+        URL url = new URL(urlArquivo);
+        HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+        conexao.setReadTimeout(300 * SEGUNDOS);
+        conexao.setConnectTimeout(300 * SEGUNDOS);
+        conexao.setRequestMethod("POST");
+        conexao.setDoOutput(true);
+        conexao.setDoInput(true);
+        conexao.setRequestProperty("Content-Type", "application/json");
+        conexao.setRequestProperty("Accept-Charset", "UTF-8");
+        conexao.connect();
+        return conexao;
     }
 }
