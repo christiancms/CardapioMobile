@@ -78,6 +78,7 @@ public class ProdutosListAdapter extends ArrayAdapter<Produto> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        final DecimalFormat df = new DecimalFormat("##0.00");
         final Produto produto = getItem(position);
         final ViewHolder holder;
         if (convertView == null) {
@@ -97,26 +98,26 @@ public class ProdutosListAdapter extends ArrayAdapter<Produto> {
         }
         //holder.tvPosicaoProduto.setText(Long.toString(getItemId(position)));
         holder.txtDescricaoProd.setText(produto.getIdProduto() + " - " + produto.getDescricao());
-        holder.txtPrecoProduto.setText(produto.getPreco().toString());
+        holder.txtPrecoProduto.setText(df.format(produto.getPreco()).toString());
         if (produtoQuantidade.containsKey(produto.getIdProduto())) {
             holder.txtQuantidadeProduto.setText(String.valueOf(produtoQuantidade.get(produto.getIdProduto())));
         } else {
             holder.txtQuantidadeProduto.setText("0");
         }
 
-        final DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+
         holder.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dados = new String[2];
-                quantidade = 1 + Double.parseDouble(holder.txtQuantidadeProduto.getText().toString());
+                quantidade = 1 + Double.parseDouble(holder.txtQuantidadeProduto.getText().toString().replace(",","."));
                 Double qtde = updateQuantidade(produto.getIdProduto().intValue(), quantidade);
                 dados[0] = produto.getPreco().toString(); // preço unitário
                 dados[1] = String.valueOf(quantidade); // quantidade.
                 itensMap.put(produto.getIdProduto(), dados);
                 Double x = updateItensLista(itensMap);// id, [preço, qtde, descont]
-                holder.txtQuantidadeProduto.setText(String.valueOf(qtde));
-                String valorFormatado = decimalFormat.format(x);
+                holder.txtQuantidadeProduto.setText(df.format(qtde));
+                String valorFormatado = df.format(x);
                 plf.getmSubTotal().setText(valorFormatado.replace(",","."));
             }
         });
@@ -124,7 +125,7 @@ public class ProdutosListAdapter extends ArrayAdapter<Produto> {
             @Override
             public void onClick(View v) {
                 dados = new String[2];
-                quantidade = Double.parseDouble(holder.txtQuantidadeProduto.getText().toString());
+                quantidade = Double.parseDouble(holder.txtQuantidadeProduto.getText().toString().replace(",","."));
                 if (quantidade > 0) {
                     quantidade = quantidade - 1;
                     Double qtde = updateQuantidade(produto.getIdProduto().intValue(), quantidade);
@@ -133,8 +134,8 @@ public class ProdutosListAdapter extends ArrayAdapter<Produto> {
                     dados[1] = String.valueOf(qtde); // quantidade
                     itensMap.put(produto.getIdProduto(), dados);
                     Double x = updateItensLista(itensMap);
-                    holder.txtQuantidadeProduto.setText(String.valueOf(qtde));
-                    String valorFormatado = decimalFormat.format(x);
+                    holder.txtQuantidadeProduto.setText(df.format(qtde));
+                    String valorFormatado = df.format(x);
                     plf.getmSubTotal().setText(valorFormatado.replace(",","."));
                 } else {
                     Toast.makeText(getContext(), "Não é permitido quantidade negativa", Toast.LENGTH_SHORT).show();

@@ -2,37 +2,39 @@ package br.com.ezzysoft.cardapiomobile;
 
 import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
 
-import org.w3c.dom.Text;
-
+import br.com.ezzysoft.cardapiomobile.fragments.ConfiguracaoFragment;
 import br.com.ezzysoft.cardapiomobile.fragments.ListagemPedidoFragment;
 import br.com.ezzysoft.cardapiomobile.fragments.PedidoListFragment;
 import br.com.ezzysoft.cardapiomobile.fragments.ProdutosListFragment;
-import br.com.ezzysoft.cardapiomobile.util.exception.NotificationUtils;
+import br.com.ezzysoft.cardapiomobile.fragments.SyncFragment;
+import br.com.ezzysoft.cardapiomobile.util.exception.Contents;
+import br.com.ezzysoft.cardapiomobile.util.exception.QRCodeEncoder;
 import br.com.ezzysoft.cardapiomobile.util.exception.Utilitarios;
 
 public class MainActivity extends AppCompatActivity
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity
     PedidoListFragment pedlf = new PedidoListFragment();
     Context ctx = MainActivity.this;
     private TextView infoTextView;
+    ImageView myImage;
+
+    SharedPreferences prefs;
 
 
     @Override
@@ -53,19 +58,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        infoTextView = (TextView) findViewById(R.id.infoTextView);
+        myImage = (ImageView) findViewById(R.id.imageView1);
 
         Bundle extras = getIntent().getExtras();
         usuarioLogin = extras != null ? extras.getString("nomeUsuario") : "";
-        endereco = extras != null ? extras.getString("endereco") : "";
-        porta = extras != null ? extras.getString("porta") : "";
-        prodListFrag.setEndereco(endereco);
-        prodListFrag.setPorta(porta);
 
-//        if (usuarioLogin != null &&(usuarioLogin.isEmpty() || !validaLogin(usuarioLogin, endereco, porta))) {
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -77,18 +74,42 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (getIntent().getExtras() != null) {
-            for (String key : getIntent().getExtras().keySet()) {
+        if (extras.getString("txtnotificacao") != null) {
+            /*for (String key : getIntent().getExtras().keySet()) {
                 String value = getIntent().getExtras().getString(key);
                 infoTextView.append("\n" + key + ": " + value);
-            }
+            }*/
+
+
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View prompView = layoutInflater.inflate(R.layout.dialog_notificacao, null);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setView(prompView);
+
+            infoTextView = (TextView) prompView.findViewById(R.id.infoNotificacao);
+            infoTextView.setText(extras.getString("txtnotificacao"));
+
+
+            alertDialogBuilder.setCancelable(false)
+                    .setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            return;
+                        }
+                    });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
         }
 
         String token = FirebaseInstanceId.getInstance().getToken();
-        infoTextView.append("Token: " + token);
+        //infoTextView.append("Token: " + token);
+        System.out.println("Token Id" + token);
         Log.d(TAG, "Token: " + token);
+
+        geraQRCardapio();
 
     }
 
@@ -113,25 +134,32 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        FragmentManager fm = getFragmentManager();
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_logout) {
-
-            System.exit(0);
+        switch (id) {
+            case R.id.action_settings:
+                fm.beginTransaction()
+                        .replace(R.id.content_frame, new ConfiguracaoFragment())
+                        .addToBackStack(null)
+                        .commit();
+                myImage.setVisibility(View.INVISIBLE);
+                return true;
+            case R.id.action_logout:
+                System.exit(0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        prefs = getSharedPreferences("configuracoes", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String nome = prefs.getString("usuario", null);
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -140,7 +168,7 @@ public class MainActivity extends AppCompatActivity
             if (id == R.id.nav_produtos) {
 
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, prodListFrag)
+                        .replace(R.id.content_frame, new ProdutosListFragment())
                         .addToBackStack(null)
                         .commit();
 
@@ -148,6 +176,12 @@ public class MainActivity extends AppCompatActivity
             if (id == R.id.nav_listagem_pedidos) {
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, new ListagemPedidoFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+            if (id == R.id.nav_manage) {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new SyncFragment())
                         .addToBackStack(null)
                         .commit();
             }
@@ -165,11 +199,42 @@ public class MainActivity extends AppCompatActivity
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        myImage.setVisibility(View.INVISIBLE);
         return true;
     }
 
     public Boolean validaLogin(String usuarioLogin, String endereco, String porta) {
         return !usuarioLogin.isEmpty() && !endereco.isEmpty() && !porta.isEmpty();
+    }
+
+    public void geraQRCardapio(){
+        String qrInputText = "http://ezzysoft.ddns.net:8181/restaurante/cardapio/mobi.jsf";
+
+        //Find screen size
+        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        Display display = manager.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        int width = point.x;
+        int height = point.y;
+        int smallerDimension = width < height ? width : height;
+        smallerDimension = smallerDimension * 3/4;
+
+        //Encode with a QR Code image
+        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(qrInputText,
+                null,
+                Contents.Type.TEXT,
+                BarcodeFormat.QR_CODE.toString(),
+                smallerDimension);
+        try {
+            Bitmap bitmap = qrCodeEncoder.encodeAsBitmap();
+            ImageView myImage = (ImageView) findViewById(R.id.imageView1);
+            myImage.setImageBitmap(bitmap);
+
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

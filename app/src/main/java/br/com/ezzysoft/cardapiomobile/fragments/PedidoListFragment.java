@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,12 +41,17 @@ import java.util.logging.Logger;
 
 import br.com.ezzysoft.cardapiomobile.R;
 import br.com.ezzysoft.cardapiomobile.adapters.PedidoListAdapter;
+import br.com.ezzysoft.cardapiomobile.bean.Ajustes;
 import br.com.ezzysoft.cardapiomobile.bean.ItemPedido;
 import br.com.ezzysoft.cardapiomobile.bean.Pedido;
+import br.com.ezzysoft.cardapiomobile.dao.AjustesDAO;
+import br.com.ezzysoft.cardapiomobile.util.exception.ErroSistema;
 import br.com.ezzysoft.cardapiomobile.ws.PedidoHttp;
 import br.com.ezzysoft.cardapiomobile.ws.transporter.ItemTransporter;
 import br.com.ezzysoft.cardapiomobile.ws.transporter.PedidoTransporter;
 
+import static br.com.ezzysoft.cardapiomobile.R.id.edtEndereco;
+import static br.com.ezzysoft.cardapiomobile.R.id.edtPorta;
 import static br.com.ezzysoft.cardapiomobile.R.id.lvPedido;
 import static br.com.ezzysoft.cardapiomobile.R.id.txtClientePedido;
 
@@ -67,6 +73,7 @@ public class PedidoListFragment extends Fragment {
     Context ctx = (Context)getActivity();
     PedidoTask mTask;
     PedidoTask mEnvioTask;
+    AjustesDAO ajustesDAO;
 
     Double valorTotalCompras;
     String obs, jsonNovoPedido="", var = "", respota;
@@ -118,10 +125,25 @@ public class PedidoListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        Bundle extras = getActivity().getIntent().getExtras();
-        setEndereco(extras != null ? extras.getString("endereco") : "");
-        setPorta(extras != null ? extras.getString("porta") : "");
+//        Bundle extras = getActivity().getIntent().getExtras();
+//        setEndereco(extras != null ? extras.getString("endereco") : "");
+//        setPorta(extras != null ? extras.getString("porta") : "");
+        try {
+            carregar();
+        } catch (ErroSistema erroSistema) {
+            erroSistema.printStackTrace();
+        }
     }
+    private void carregar() throws ErroSistema {
+        Ajustes ajustes;
+
+        ajustesDAO = new AjustesDAO(getActivity());
+        ajustes = ajustesDAO.busca();
+
+        setEndereco(ajustes.getIp() != null ? ajustes.getIp() : "");
+        setPorta(ajustes.getPorta() != null ? ajustes.getPorta() : "");
+    }
+
 
     @Nullable
     @Override
@@ -144,7 +166,7 @@ public class PedidoListFragment extends Fragment {
         addInfo = (EditText) layout.findViewById(R.id.edtPrazo);
         buttonEmitir = (Button) layout.findViewById(R.id.buttonEmitir);
         buttonEmitir.setVisibility(View.VISIBLE);
-
+        onLoad();
         if (getArguments() != null) {
 
             if (getArguments().getString("origemPedido") == "listaPedidos") {
@@ -173,10 +195,10 @@ public class PedidoListFragment extends Fragment {
                 obs = "" + addInfo.getText();
 
                 pedido = new Pedido();
-                pedido.setClienteId(0l); // Zero, não precisa informar o cliente.
-                pedido.setColaboradorId(1l); // Christian
+                pedido.setClienteId(1l); // Cliente Padrão
+                pedido.setColaboradorId(1l); // Colaborador Padrão
                 pedido.setMesa(Integer.parseInt(mClientePedido.getText().toString()));
-                pedido.setDescricao(obs);
+                pedido.setDescricao(obs.isEmpty() ? "Android" : obs);
                 pedido.setHoraPedido(formatter.format(new Date()));
                 pedido.setDataPedido(sdf.format(new Date()));
 
@@ -204,6 +226,16 @@ public class PedidoListFragment extends Fragment {
         });
 
         return layout;
+    }
+
+    private void onLoad(){
+        try {
+            carregar();
+        } catch (ErroSistema erroSistema) {
+            erroSistema.printStackTrace();
+        } finally {
+            Log.e("Carregar:", "Informações do banco de dados!");
+        }
     }
 
     public String pedidoToJson(Pedido elem) throws ParseException {
@@ -306,6 +338,7 @@ public class PedidoListFragment extends Fragment {
                     .commit();
     }
 
+    // Envio do pedido para o servidor de retaguarda da aplicação, através da classe AsyncTask
     class EnvioTask extends AsyncTask<String, Void, List<String>> {
 
         @Override

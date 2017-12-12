@@ -70,8 +70,7 @@ public class ListagemPedidoAdapter extends ArrayAdapter<Pedido> {
         final DecimalFormat decimalFormat = new DecimalFormat("##0.00");
         final ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.pedido_list, null);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.pedido_list, null);
             holder = new ViewHolder();
             holder.txtNpedido = (TextView) convertView.findViewById(R.id.txtNpedido);
             holder.txtClientePedido = (TextView) convertView.findViewById(R.id.txtClientePedido);

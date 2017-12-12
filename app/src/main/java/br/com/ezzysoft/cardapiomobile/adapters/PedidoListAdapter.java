@@ -21,7 +21,9 @@ import java.util.Map;
 import br.com.ezzysoft.cardapiomobile.R;
 import br.com.ezzysoft.cardapiomobile.bean.ItemPedido;
 import br.com.ezzysoft.cardapiomobile.bean.Produto;
+import br.com.ezzysoft.cardapiomobile.dao.ProdutoDAO;
 import br.com.ezzysoft.cardapiomobile.fragments.ProdutosListFragment;
+import br.com.ezzysoft.cardapiomobile.util.exception.ErroSistema;
 
 /**
  * Created by christian on 02/07/17.
@@ -75,8 +77,13 @@ public class PedidoListAdapter extends ArrayAdapter<ItemPedido> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-
-        holder.txtDescricaoProd.setText("");
+        Produto p = null;
+        try {
+            p = new ProdutoDAO(getContext()).findById(item.getProdutoId());
+        } catch (ErroSistema erroSistema) {
+            erroSistema.printStackTrace();
+        }
+        holder.txtDescricaoProd.setText(item.getProdutoId().toString() + " " + p.getDescricao());
         holder.txtQuantidadeProduto.setText(df.format(item.getQuantidade()));
         holder.txtPrecoProduto.setText(df.format(item.getVlrUnitProduto()));
 

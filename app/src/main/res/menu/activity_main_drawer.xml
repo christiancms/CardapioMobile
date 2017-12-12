@@ -5,11 +5,16 @@
 
         <item
             android:id="@+id/nav_produtos"
-            android:icon="@drawable/ic_restaurant_black_24dp"
+            android:icon="@drawable/food"
             android:title="Produtos" />
         <item
             android:id="@+id/nav_listagem_pedidos"
             android:icon="@drawable/restaurant"
             android:title="Listar Pedidos" />
+
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Sincronizar" />
     </group>
 </menu>

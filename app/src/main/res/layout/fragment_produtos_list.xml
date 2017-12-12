@@ -11,29 +11,19 @@
         android:layout_centerHorizontal="true"
         android:background="#0011d2"
         android:text="Produto"
+        android:textSize="32sp"
         android:textAlignment="center"
         android:textColor="#ffffff" />
 
     <Spinner
         android:id="@+id/spnGrupo"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtTituloProduto"
+        android:textSize="32sp"
+        android:prompt="@string/spinner_title"
         android:entries="@array/grupos"
         android:spinnerMode="dialog"/>
-
-    <TextView
-        android:id="@+id/lblClientePedido"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/spnGrupo"
-        android:layout_centerHorizontal="true"
-        android:background="#bac1ec"
-        android:text="Mesa:"
-        android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
-        android:textSize="16dp" />
-
 
 
     <Button
@@ -42,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/inputSearch"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/lblClientePedido"
+        android:layout_below="@+id/spnGrupo"
         android:text="0"
         android:textColor="#0015d2" />
 
@@ -51,11 +41,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblClientePedido"
+        android:layout_below="@+id/spnGrupo"
         android:layout_toStartOf="@+id/btnSubTotal"
         android:inputType="number"
-        android:text="5"
-        android:hint="Número da mes.." />
+        android:textSize="32sp"
+        android:hint="Nº da mesa.." />
 
     <ProgressBar
         android:id="@+id/progressBar"

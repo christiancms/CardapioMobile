@@ -7,28 +7,18 @@ import android.net.NetworkInfo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-import br.com.ezzysoft.cardapiomobile.bean.Grupo;
-import br.com.ezzysoft.cardapiomobile.bean.Marca;
 import br.com.ezzysoft.cardapiomobile.bean.Produto;
-import br.com.ezzysoft.cardapiomobile.bean.Unidade;
+import br.com.ezzysoft.cardapiomobile.util.exception.Utilitarios;
 
 /**
  * Created by christian on 21/06/17.
@@ -44,6 +34,7 @@ public class ProdutoHttp {
         HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
         conexao.setReadTimeout(300 * SEGUNDOS);
         conexao.setConnectTimeout(300 * SEGUNDOS);
+
         conexao.setRequestMethod("POST");
         conexao.setDoInput(true);
         conexao.setDoOutput(true);
@@ -67,7 +58,7 @@ public class ProdutoHttp {
         System.out.println(xml);
         URL url;
         try {
-            HttpURLConnection conexao = connectar("http://" + enderecoPorta + "/restaurante/ws/pedido/cria");
+            HttpURLConnection conexao = connectar("http://" + enderecoPorta + Utilitarios.APPURL +"pedido/cria");
             int resposta = conexao.getResponseCode();
             if (resposta == HttpURLConnection.HTTP_OK) {
                 outputStream = conexao.getOutputStream();
@@ -182,11 +173,11 @@ public class ProdutoHttp {
     public static List<Produto> carregarProdutosJson(String var) {
         String stringJson;
         try {
-            HttpURLConnection conexao = connectar("http://" + var + "/restaurante/ws/produto/lista");
+            HttpURLConnection conexao = connectar("http://" + var + Utilitarios.APPURL+"produto/lista");
             int resposta = conexao.getResponseCode();
             if (resposta == HttpURLConnection.HTTP_OK) {
                 InputStream is = conexao.getInputStream();
-                stringJson = String.valueOf(bytesParaString(is));
+                stringJson = String.valueOf(Utilitarios.bytesParaString(is));
                 if (!stringJson.equals("0")) {
                     JSONObject json = new JSONObject(stringJson);
                     return lerJsonProdutos(json);
@@ -200,36 +191,36 @@ public class ProdutoHttp {
 
     public static List<Produto> lerJsonProdutos(JSONObject json) throws JSONException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        List<Produto> listaDeProdutos = new ArrayList<Produto>();
+        List<Produto> listaProdutos = new ArrayList<Produto>();
 
-        JSONArray jsonEstgproduto = json.getJSONArray("produtos");
-        for (int i = 0; i < jsonEstgproduto.length(); i++) {
-            JSONObject jsonProduto = jsonEstgproduto.getJSONObject(i);
+        JSONArray jsonProduto = json.getJSONArray("produtos");
+        for (int i = 0; i < jsonProduto.length(); i++) {
+            JSONObject jProduto = jsonProduto.getJSONObject(i);
             Produto produto = new Produto(
-                    jsonProduto.getLong("idProduto"),
-                    jsonProduto.getString("descricao"),
-                    jsonProduto.getDouble("preco"),
-                    jsonProduto.getLong("grupoId"),
-                    jsonProduto.getLong("marcaId"),
-                    jsonProduto.getLong("unidadeId"),
-                    jsonProduto.getString("nomeGrupo")
+                    jProduto.getLong("idProduto"),
+                    jProduto.getString("descricao"),
+                    jProduto.getDouble("preco"),
+                    jProduto.getLong("grupoId"),
+                    jProduto.getLong("marcaId"),
+                    jProduto.getLong("unidadeId"),
+                    jProduto.getString("nomeGrupo")
 
             );
-            listaDeProdutos.add(produto);
+            listaProdutos.add(produto);
         }
-        return listaDeProdutos;
+        return listaProdutos;
     }
-    private static String bytesParaString(InputStream is) throws IOException {
-        byte[] buffer = new byte[1024];
-        // O bufferzao vai armazenar todos os bytes lidos
-        ByteArrayOutputStream bufferzao = new ByteArrayOutputStream();
-        // precisamos saber quantos bytes foram lidos
-        int bytesLidos;
-        // Vamos lendo de 1KB por vez...
-        while ((bytesLidos = is.read(buffer)) != -1) {
-            // copiando a quantidade de bytes lidos do buffer para o bufferzão
-            bufferzao.write(buffer, 0, bytesLidos);
-        }
-        return new String(bufferzao.toByteArray(), "UTF-8");
-    }
+//    private static String bytesParaString(InputStream is) throws IOException {
+//        byte[] buffer = new byte[1024];
+//        // O bufferzao vai armazenar todos os bytes lidos
+//        ByteArrayOutputStream bufferzao = new ByteArrayOutputStream();
+//        // precisamos saber quantos bytes foram lidos
+//        int bytesLidos;
+//        // Vamos lendo de 1KB por vez...
+//        while ((bytesLidos = is.read(buffer)) != -1) {
+//            // copiando a quantidade de bytes lidos do buffer para o bufferzão
+//            bufferzao.write(buffer, 0, bytesLidos);
+//        }
+//        return new String(bufferzao.toByteArray(), "UTF-8");
+//    }
 }

@@ -7,11 +7,11 @@
     <string name="action_settings">Ajustes</string>
     <string name="action_logout">Sair</string>
     <string name="action_login"></string>
-    <string name="title_activity_login">Autenticação</string>
+    <string name="title_activity_login">Cardápio Mobile</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Senha (opcional)</string>
+    <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Iniciar</string>
     <string name="action_sign_in_short">Autenticação</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -25,7 +25,7 @@
     <!-- Lista de colaboradores/garçons -->
     <string-array name="colaboradores">
         <item>Escolha o usuário</item>
-        <item>Christian</item>
+        <item>ezzyadm</item>
     </string-array>
 
     <!-- Lista de grupos -->
@@ -40,4 +40,8 @@
         <item quantity="one">1 mensagem</item>
         <item quantity="other">%1$d mensagens</item>
     </plurals>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="spinner_title">Todos</string>
 </resources>

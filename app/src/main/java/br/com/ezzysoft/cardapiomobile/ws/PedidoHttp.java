@@ -4,33 +4,25 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicHeader;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,7 +31,7 @@ import java.util.List;
 
 import br.com.ezzysoft.cardapiomobile.bean.ItemPedido;
 import br.com.ezzysoft.cardapiomobile.bean.Pedido;
-import br.com.ezzysoft.cardapiomobile.bean.Produto;
+import br.com.ezzysoft.cardapiomobile.util.exception.Utilitarios;
 
 /**
  * Created by christian on 21/06/17.
@@ -61,7 +53,7 @@ public class PedidoHttp {
         conexao.setRequestProperty("Accept-Charset", "UTF-8");
         conexao.setDoInput(true);
         conexao.setDoOutput(true);
-        conexao.setRequestMethod("PUT");
+        conexao.setRequestMethod("POST");
         conexao.connect();
         return conexao;
     }
@@ -73,13 +65,18 @@ public class PedidoHttp {
         return (info != null && info.isConnected());
     }
 
-    public static List<Pedido> carregarPedidosJson(String enderecoPorta) {
+    public static List<Pedido> carregarPedidosJson(String var) {
+        String stringJson;
         try {
-            HttpURLConnection conexao = connectar("http://" + enderecoPorta + "/restaurante/ws/pedido/lista");
-            if (conexao.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            HttpURLConnection conexao = connectar("http://" + var + Utilitarios.APPURL + "pedido/lista");
+            int resposta = conexao.getResponseCode();
+            if (resposta == HttpURLConnection.HTTP_OK) {
                 InputStream is = conexao.getInputStream();
-                JSONObject json = new JSONObject(bytesParaString(is));
-                return lerJsonPedidos(json);
+                stringJson = String.valueOf(Utilitarios.bytesParaString(is));
+                if (!stringJson.equals("0")) {
+                    JSONObject json = new JSONObject(stringJson);
+                    return lerJsonPedidos(json);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +86,7 @@ public class PedidoHttp {
 
     public static List<Pedido> lerJsonPedidos(JSONObject json) throws JSONException {
         System.out.println(json);
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formato = new SimpleDateFormat("ddMMyyyy");
         Pedido p;
         String dataFormatada = "";
         ItemPedido iped;
@@ -97,19 +94,31 @@ public class PedidoHttp {
         List<ItemPedido> listaItens = new ArrayList<>();
         JSONArray jsonPedidos = json.getJSONArray("pedidos");
         for (int i = 0; i < jsonPedidos.length(); i++) {
-            JSONObject jsonPed = jsonPedidos.getJSONObject(i);//  if (jsonPed.has("horaPedido")){ }
+            JSONObject jsonPed = jsonPedidos.getJSONObject(i);
+            // if (jsonPed.has("horaPedido")){ }
+            // Long clienteId, Long colaboradorId, Integer mesa
+            p = new Pedido(
+                    jsonPed.getInt("idPedido"),
+                    jsonPed.getString("dataPedido"),
+                    jsonPed.getString("horaPedido"),
+                    jsonPed.getString("descricao"),
+                    jsonPed.getLong("clienteId"),
+                    jsonPed.getLong("colaboradorId"),
+                    jsonPed.getInt("mesa")
 
-            p = new Pedido();
-            Object o = jsonPed.getInt("idPedido");
-            System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            System.out.println(o.getClass().getName());
-            System.out.println(p.getClass().getName());
-            System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            p.setIdPedido(Integer.parseInt(jsonPed.getString("idPedido")));
-            p.setCodigo(jsonPed.getString("idPedido"));
+            );
+//            Object o = jsonPed.getInt("idPedido");
+//            System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+//            System.out.println(o.getClass().getName());
+//            System.out.println(p.getClass().getName());
+//            System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+//            p.setIdPedido(Integer.parseInt(jsonPed.getString("idPedido")));
+//            p.setCodigo(jsonPed.getString("idPedido"));
             try {
 
-                Date data = formato.parse(jsonPed.getString("dataPedido"));
+//                Date data = formato.parse(jsonPed.getString("dataPedido"));
+                String dataTemp = jsonPed.getString("dataPedido").replaceAll("\\/", "");
+                Date data = formato.parse(dataTemp);
                 formato.applyPattern("dd/MM/yyyy");
                 dataFormatada = formato.format(data);
                 System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -165,7 +174,7 @@ public class PedidoHttp {
         HttpClient httpClient = new DefaultHttpClient();
         HttpConnectionParams.setSoTimeout(httpClient.getParams(), 25000);
         HttpResponse response = null;
-        HttpPost httpPost = new HttpPost("http://" + enderecoPorta + "/restaurante/ws/pedido/cria");
+        HttpPost httpPost = new HttpPost("http://" + enderecoPorta + Utilitarios.APPURL + "pedido/cria");
         try {
             httpPost.setEntity(new StringEntity(jsonNovoPedido));
         } catch (UnsupportedEncodingException e) {

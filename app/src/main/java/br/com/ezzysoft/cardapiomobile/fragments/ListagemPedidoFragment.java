@@ -2,6 +2,7 @@ package br.com.ezzysoft.cardapiomobile.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,8 +19,10 @@ import java.util.List;
 
 import br.com.ezzysoft.cardapiomobile.R;
 import br.com.ezzysoft.cardapiomobile.adapters.ListagemPedidoAdapter;
+import br.com.ezzysoft.cardapiomobile.bean.Ajustes;
 import br.com.ezzysoft.cardapiomobile.bean.ItemPedido;
 import br.com.ezzysoft.cardapiomobile.bean.Pedido;
+import br.com.ezzysoft.cardapiomobile.dao.AjustesDAO;
 import br.com.ezzysoft.cardapiomobile.ws.PedidoHttp;
 import br.com.ezzysoft.cardapiomobile.ws.ProdutoHttp;
 
@@ -38,6 +41,9 @@ public class ListagemPedidoFragment extends Fragment {
     private String endereco;
     private String porta;
     ProgressBar mProgressBar;
+    AjustesDAO ajustesDAO;
+    private Context ctx;
+    String var;
 
     public String getEndereco() {
         return endereco;
@@ -62,6 +68,13 @@ public class ListagemPedidoFragment extends Fragment {
         Bundle extras = getActivity().getIntent().getExtras();
         setEndereco(extras != null ? extras.getString("endereco") : "");
         setPorta(extras != null ? extras.getString("porta") : "");
+        ctx = this.getActivity().getApplicationContext();
+        Ajustes ajustes;
+        ajustesDAO = new AjustesDAO(ctx);
+        ajustes = ajustesDAO.busca();
+        var = ajustes.getIp() + ":" + ajustes.getPorta();
+
+        setCtx(ctx);
     }
 
     @Override
@@ -113,6 +126,14 @@ public class ListagemPedidoFragment extends Fragment {
         return layout;
     }
 
+    public Context getCtx() {
+        return ctx;
+    }
+
+    public void setCtx(Context ctx) {
+        this.ctx = ctx;
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -158,7 +179,7 @@ public class ListagemPedidoFragment extends Fragment {
 
         @Override
         protected List<Pedido> doInBackground(Void... strings) {
-            return PedidoHttp.carregarPedidosJson(getEndereco() + ":" + getPorta());
+            return PedidoHttp.carregarPedidosJson(var);
         }
 
         @Override
@@ -169,7 +190,7 @@ public class ListagemPedidoFragment extends Fragment {
                 mPedidos.clear();
                 mPedidos.addAll(pedidos);
             } else {
-                mTextMesagem.setText("Sem pedidos");
+                mTextMesagem.setText("Sem pedidos pendentes de envio");
             }
             onStart();
         }
